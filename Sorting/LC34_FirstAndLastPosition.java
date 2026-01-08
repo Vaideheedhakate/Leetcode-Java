@@ -21,9 +21,21 @@ public class LC34_FirstAndLastPosition {
         // If first not found → no need to search last
         if (ans[0] == -1) return ans;
 
+        // FIND LAST POSITION
+        start = 0;
+        end = n - 1;
+        while(start <= end){
+            int mid = start + (end - start) / 2;
 
-
-
-        return ans;
+            if(arr[mid] == target){
+                ans[1] = mid;      // store index as possible last position
+                start = mid + 1;   // move right to find later target
+            }
+            else if(arr[mid] > target)
+                end = mid - 1;     // target might be left
+            else
+                start = mid + 1;   // target might be right
+        }
+        return ans; //Return first & last position
     }
 }
