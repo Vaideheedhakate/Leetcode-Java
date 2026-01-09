@@ -12,6 +12,15 @@ public class LC658_KClosestElements {
             Collections.sort(ans);
             return ans;
         }
+        int lb=n,low=0,high=n-1;
+        while(low<=high){
+            int mid = low + (high-low)/2;
+            if(arr[mid]>=x){
+                lb = mid;
+                high = mid-1;
+            }
+            else low = mid + 1;
+        }
         return ans;
     }
 }
