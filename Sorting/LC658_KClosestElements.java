@@ -21,6 +21,31 @@ public class LC658_KClosestElements {
             }
             else low = mid + 1;
         }
+        int i = lb - 1, j = lb;
+        while(k>0 && i>=0 && j<n){
+            int di = Math.abs(x-arr[i]);
+            int dj = Math.abs(x-arr[j]);
+            if(di<=dj){
+                ans.add(arr[i]);
+                i--;
+            }
+            else {
+                ans.add(arr[j]);
+                j++;
+            }
+            k--;
+        }
+        while(k>0 && j<n){
+            ans.add(arr[j]);
+            j++;
+            k--;
+        }
+        while(k>0 && i>=0){
+            ans.add(arr[i]);
+            i--;
+            k--;
+        }
+        Collections.sort(ans);
         return ans;
     }
 }
